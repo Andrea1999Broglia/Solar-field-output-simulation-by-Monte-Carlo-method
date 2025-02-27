@@ -24,9 +24,9 @@ In a random day, two variables will hence impact P: the irradiance and the tempe
 So, for each day a profile of irradiance and temperature will be generated.
 
 In particular, the $\frac{G}{G_{std}}$ is calculated as per [1], which provides the following empirical correlation:
-\begin{equation}
-    \frac{G}{G_{std}} = 0.0014·w_c^5 − 0.0108·w_c^4 + 0.0128·w_c^3 + 0.0252·w_c^2 + 0.1836·w_c + 0.3804
-\end{equation}
+
+    $\frac{G}{G_{std}} = 0.0014·w_c^5 − 0.0108·w_c^4 + 0.0128·w_c^3 + 0.0252·w_c^2 + 0.1836·w_c + 0.3804$
+
 where $w_c$ is a score that translates a weather forecast/condition to an integer number:
 
 
