@@ -13,10 +13,14 @@ For this reason, I decided to use some common python libraries (*math, random, n
 
 # The model
 The equation used to calculate the power output of the plant at any given moment is the following equation reported by Brecl et al. [1]:
+<div style="text-align: center;">
+  <img src="images/power.png"  width="600">
+</div>
 
-$$
-    P = P_{nominal}\frac{G}{G_{std}}\left(1-\gamma \left(T_{cell} -25 °C \right) \right)
-$$
+
+
+
+
 where $P_{nominal}$ is the nominal power of the field (or more specifically of the solar cell), G is the irradiance which undergoes the field, $G_{std}$ is the standard reference for irradiance ($1000 \ W/m^2$), $\gamma$ is a parameter that accounts for temperature effects on the cell efficiency and $T_{cell}$ is the temperature of the cell.
 
 In a random day, two variables will hence impact P: the irradiance and the temperature. 
@@ -25,7 +29,9 @@ So, for each day a profile of irradiance and temperature will be generated.
 
 In particular, the $\frac{G}{G_{std}}$ is calculated as per [1], which provides the following empirical correlation:
 
-    $\frac{G}{G_{std}} = 0.0014·w_c^5 − 0.0108·w_c^4 + 0.0128·w_c^3 + 0.0252·w_c^2 + 0.1836·w_c + 0.3804$
+$$
+    \frac{G}{G_{std}} = 0.0014·w_c^5 − 0.0108·w_c^4 + 0.0128·w_c^3 + 0.0252·w_c^2 + 0.1836·w_c + 0.3804
+$$
 
 where $w_c$ is a score that translates a weather forecast/condition to an integer number:
 
