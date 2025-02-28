@@ -11,15 +11,14 @@ For this reason, I decided to use some common python libraries (*math, random, n
 >3) compute **deterministically** the output through a model,
 >4) aggregate the results. 
 
+> IMPORTANT: The Jupyter notebook containing the code can be found [HERE](https://github.com/Andrea1999Broglia/Solar-field-output-Montecarlo-analysis/blob/main/model.ipynb)
+
 # The model
 The equation used to calculate the power output of the plant at any given moment is the following equation reported by Brecl et al. [1]:
+
 <div style="text-align: center;">
   <img src="images/power.png"  width="300">
 </div>
-
-
-
-
 
 where $P_{nominal}$ is the nominal power of the field (or more specifically of the solar cell), G is the irradiance which undergoes the field, $G_{std}$ is the standard reference for irradiance ($1000 \ W/m^2$), $\gamma$ is a parameter that accounts for temperature effects on the cell efficiency and $T_{cell}$ is the temperature of the cell.
 
@@ -32,12 +31,16 @@ In particular, the $\frac{G}{G_{std}}$ is calculated as per following empirical 
 <div style="text-align: center;">
   <img src="images/Irradiation.png"  width="200">
 </div>
+
 where
+
 <div style="text-align: center;">
   <img src="images/phi.png"  width="400">
 </div>
+
 given that t is the time in the day, $t_{0}$ is noon
 and $T_0$ is the duration of the day. As per Brecl et al. [1], 
+
 <div style="text-align: center;">
   <img src="images/kt.png"  width="700">
 </div>
@@ -54,8 +57,7 @@ where $w_c$ is the weather class, a score that translates a weather forecast/con
 | Overcast | 0    |
 | Overcast with heavy rain | -1    |
 
-
-
+# Monte Carlo analysis
 
 
 
