@@ -1,4 +1,5 @@
 # Solar field output simulation by Monte Carlo method
+
 Being able to predict the energy output of a solar field in a given day and, in a broader sense, an average day is of paramount importance:
 1) in the first case, it allows to the owner of the plant to sell a power profile to the grid during the daily energy trading activities;
 2) in the second case, it is important to simulate the power output of a solar field before its realization in order to evaluate the profitability of the investment.
@@ -11,7 +12,7 @@ For this reason, I decided to use some common python libraries (*math, random, n
 >3) compute **deterministically** the output through a model,
 >4) aggregate the results. 
 
-> IMPORTANT: The Jupyter notebook containing the code can be found [HERE](https://github.com/Andrea1999Broglia/Solar-field-output-Montecarlo-analysis/blob/main/model.ipynb)
+> IMPORTANT: The Jupyter notebook containing the code can be found and downloaded [HERE](https://github.com/Andrea1999Broglia/Solar-field-output-Montecarlo-analysis/blob/main/model.ipynb)
 
 # The model
 The equation used to calculate the power output of the plant at any given moment is the following equation reported by Brecl et al. [1]:
@@ -59,13 +60,70 @@ where $w_c$ is the weather class, a score that translates a weather forecast/con
 
 # Monte Carlo analysis
 
+**1) Input dominion**
+
+The data needed to generate a power output value are:
+-   the nominal power of the plant, which is given,
+-   $\gamma$, which is given ($\simeq$ 0.004 as per Dubey et al. [2])
+- the temperature,
+- the irradiance ratio.
+
+It was decided to randomly generate two values:
+-   the duration of the day in minutes, whose dominion is every possible duration in Milan during the year, which is minimum 500 minutes and maximum 940 minutes. The dominion was represented as an array extending from 500 to 940 ([500, 501, 502, ..., 900]).
+-   the weather class of the day, which can be chosen among the values in the table above. To take into account the variability of the weather class during the day, every four and a half hours the weather class can be increased or decreased by 0.5.
+-   the moment of maximum temperature of the day $t_{max}$, between 11:00 and 14:00.
+
+**2) random input generation**
+
+Both the duration of the day and the first weather class of the day are generated following a uniform probability distribution over both dominions.
+
+**3) deterministical output evaluation**
+Given the duration of the day and the weather class, at any time the ratio between the actual and standard irradiation can be evaluated. 
+
+For what concerns the temperature, instead, a minimum and a maximum temperature where randomly generated through a function that chooses among a set of values correlated to the day duration. This is done since, likely, a long day is in summer and a short day is in winter.
+
+Given the maximum and minimum temperature, the temperature profile was calculated as:
+
+<div style="text-align: center;">
+  <img src="images/temperature.png"  width="300">
+</div>
+
+where the higher the $\sigma$ value, the broader the temperature function gets. Clearly, this is a really rough estimate of the temperature of the cell.
+
+At this point, all parameters needed for the power calculation are available.
+
+**4) Data aggregation**
+
+First of all, a randomly generated power output profile looks like this:
+
+<div style="text-align: center;">
+  <img src="images/random_profile.png"  width="400">
+</div>
+
+but, given that the input is random, the output may differ:
 
 
+<div style="text-align: center;">
+  <img src="images/ten.png"  width="400">
+</div>
 
+One thousand random day were generated and their average and standrd error were calculated:
 
+<div style="text-align: center;">
+  <img src="images/average.png"  width="400">
+</div>
 
+Note that the nominal power is not even in range.
 
+For what concerns the cumulate energy production per day, the results are displayed in the following frequency graph:
 
+<div style="text-align: center;">
+  <img src="images/frequency.png"  width="400">
+</div>
+
+The values range, in this simulation, from 1175 MWh to 9813 MWh, with an average of 5281 MWh.
+
+> Note that for a 1000 MW solar field, an energy production of 5281 MWh/day corresponds to around 1936 yearly working hours. 
 
 # Bibliography
 1) > **Kristijan Brecl**, **Marko Topič**, *Photovoltaics (PV) System Energy Forecast on the Basis of the Local Weather Forecast: Problems, Uncertainties and Solutions*, Energies, Volume 11, 2018, Number 5, Article Number 1143, [DOI: 10.3390/en11051143](https://doi.org/10.3390/en11051143).  
