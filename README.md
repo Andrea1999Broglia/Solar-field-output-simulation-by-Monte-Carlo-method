@@ -69,9 +69,12 @@ The data needed to generate a power output value are:
 - the irradiance ratio.
 
 It was decided to randomly generate two values:
--   the duration of the day in minutes, whose dominion is every possible duration in Milan during the year, which is minimum 500 minutes and maximum 940 minutes. The dominion was represented as an array extending from 500 to 940 ([500, 501, 502, ..., 900]).
+-   the duration of the day in minutes, whose dominion is every possible duration in Milan during the year, which is minimum 500 minutes and maximum 940 minutes. The dominion was represented as an array extending from 515 to 915 ([515, 501, 502, ..., 915]).
 -   the weather class of the day, which can be chosen among the values in the table above. To take into account the variability of the weather class during the day, every four and a half hours the weather class can be increased or decreased by 0.5.
 -   the moment of maximum temperature of the day $t_{max}$, between 11:00 and 14:00.
+
+>*Note on the day duration*: 
+The duration of the day was established as detailed in a work by Forsythe et al. [3] which consists of an overview regarding different models, among which there is the Brock model, which was adopted.
 
 **2) random input generation**
 
@@ -130,6 +133,9 @@ The values range, in this simulation, from 1175 MWh to 9813 MWh, with an average
 
 
 2) > **Swapnil Dubey**, **Jatin Narotam Sarvaiya**, **Bharath Seshadri**, *Temperature Dependent Photovoltaic (PV) Efficiency and Its Effect on PV Production in the World – A Review*, Energy Procedia, Volume 33, 2013, Pages 311-321, ISSN 1876-6102, [DOI: 10.1016/j.egypro.2013.05.072](https://doi.org/10.1016/j.egypro.2013.05.072)  
+
+3) > **Forsythe, W. C., Rykiel, E. J., Stahl, R. S., Wu, H., & Schoolfield, R. M. (1995)**. A model comparison for daylength as a function of latitude and day of year. *Ecological Modelling, 80*(1), 87-95. [https://doi.org/10.1016/0304-3800(94)00034-F](https://doi.org/10.1016/0304-3800(94)00034-F)
+
 
 
  
