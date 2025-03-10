@@ -73,7 +73,7 @@ It was decided to randomly generate two values:
 -   the weather class of the day, which can be chosen among the values in the table above. To take into account the variability of the weather class during the day, every four and a half hours the weather class can be increased or decreased by 0.5.
 -   the moment of maximum temperature of the day $t_{max}$, between 11:00 and 14:00.
 
->*Note on the day duration*: 
+>*Note about the day duration*: 
 The duration of the day was established as detailed in a work by Forsythe et al. [3] which consists of an overview regarding different models, among which there is the Brock model, which was adopted.
 
 **2) random input generation**
