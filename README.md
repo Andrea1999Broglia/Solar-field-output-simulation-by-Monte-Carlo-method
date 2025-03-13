@@ -128,6 +128,20 @@ The values range, in this simulation, from 1175 MWh to 9813 MWh, with an average
 
 > Note that for a 1000 MW solar field, an energy production of 5281 MWh/day corresponds to around 1936 yearly working hours. 
 
+In order to evaluate the change of the daily average power output in different moments of the year, it was estimated for 365 days in a range of latitudes form 0° to 60°. The result is plotted in a heatmap.
+
+<div style="text-align: center;">
+  <img src="images/heatmap.png"  width="400">
+</div>
+
+It may surprise the presence days with a higher power output at higher latitudes, but while at the equator the days all last (about) 12 hours, at higher latitudes there are days that last way longer resulting in higher daily outputs.
+
+Still, given that the weather class get higher approaching the equator, the average daily power output over a year increases lowering the latitude; in the same fashion, the standard error lowers due to the increasing of the weather class lower bound as shown in the following graph:
+
+<div style="text-align: center;">
+  <img src="images/latitude behavior.png"  width="400">
+</div>
+
 # Bibliography
 1) > **Kristijan Brecl**, **Marko Topič**, *Photovoltaics (PV) System Energy Forecast on the Basis of the Local Weather Forecast: Problems, Uncertainties and Solutions*, Energies, Volume 11, 2018, Number 5, Article Number 1143, [DOI: 10.3390/en11051143](https://doi.org/10.3390/en11051143).  
 
