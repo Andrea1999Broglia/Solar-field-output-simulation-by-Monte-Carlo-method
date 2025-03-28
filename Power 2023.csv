@@ -1,13 +1,3 @@
-Latitude (decimal degrees):	45.465
-Longitude (decimal degrees):	9.188
-Elevation (m):	128
-Radiation database:	PVGIS-SARAH3
-
-
-Slope: 40 deg. (optimum)
-Azimuth: 3 deg. (optimum)
-Nominal power of the PV system (c-Si) (kWp):	1000.0
-System losses (%):	0.4
 time,P,G(i),H_sun,T2m,WS10m,Int
 20230101:0010,0.0,0.0,0.0,10.18,0.0,0.0
 20230101:0110,0.0,0.0,0.0,9.62,0.62,0.0
