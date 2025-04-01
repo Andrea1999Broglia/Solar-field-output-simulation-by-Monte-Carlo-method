@@ -1,8 +1,8 @@
 # Solar-field-output-simulation-by-Monte-Carlo-method
 
 Being able to predict the energy output of a solar field in a given day and, in a broader sense, an average day is of paramount importance:
-1) in the first case, it allows to the owner of the plant to sell a power profile to the grid during the daily energy trading activities;
-2) in the second case, it is important to simulate the power output of a solar field before its realization in order to evaluate the profitability of the investment.
+1) in the first case, it allows traders to bid a power profile during the daily energy trading activities;
+2) in the second case, it is important to simulate the power output of a solar field before its realization in order to evaluate the profitability of a possible investment.
 
 For this reason, I decided to use some common python libraries (*math, random, numpy*) to implement a model that answer the first question and a Monte Carlo simulation that, applied to said model, allows to statistically describe the output of a solar field on a given day.
 
@@ -13,6 +13,11 @@ For this reason, I decided to use some common python libraries (*math, random, n
 >4) aggregate the results. 
 
 > IMPORTANT: The Jupyter notebook containing the code can be found and downloaded [HERE](https://github.com/Andrea1999Broglia/Solar-field-output-Montecarlo-analysis/blob/main/model.ipynb)
+
+# The Data
+This model aims at simulating the performance of 10 MW solar field in Milan. As a conseuqence, the weather phenomena distribution was based on the historical data provided by [Il Meteo](https://www.ilmeteo.it/portale/archivio-meteo).
+
+Moreover, the expected daily power output was compared with the data regarding the energy price in Milan during all of 2024 (Prezzo zonale Nord) provided by [GME](https://www.mercatoelettrico.org/it-it/Home/Esiti/Elettricita/MGP/Esiti/PUN).
 
 # The model
 The equation used to calculate the power output of the plant at any given moment is the following equation reported by Brecl et al. [1]:
@@ -124,23 +129,19 @@ For what concerns the cumulate energy production per day, the results are displa
   <img src="images/frequency.png"  width="400">
 </div>
 
-The values range, in this simulation, from 1175 MWh to 9813 MWh, with an average of 5281 MWh.
+In this simulation, the minimum daily power output was 294 kwh, the maximum was 76245 kWh, and the average was 36850 kwh which corresponds to 1351 equivalent hours per year. 
 
-> Note that for a 1000 MW solar field, an energy production of 5281 MWh/day corresponds to around 1936 yearly working hours. 
-
-In order to evaluate the change of the daily average power output in different moments of the year, it was estimated for 365 days in a range of latitudes form 0° to 60°. The result is plotted in a heatmap.
-
+# Energy Price
+It was deemed of interest to compare the average daily power profile with the average daily power price, as seen in the following graph:
 <div style="text-align: center;">
-  <img src="images/heatmap.png"  width="400">
+  <img src="images\PZ comparison.png"  width="650">
 </div>
+ 
+The average price is around 108 €/MWh, but since there is a lack of overlap between the energy price and output, it is reasonable to expect that this phenomenon could damage the revenue stream of the solar field.
 
-It may surprise the presence days with a higher power output at higher latitudes, but while at the equator the days all last (about) 12 hours, at higher latitudes there are days that last way longer resulting in higher daily outputs.
-
-Still, given that the weather class get higher approaching the equator, the average daily power output over a year increases lowering the latitude; in the same fashion, the standard error lowers due to the increasing of the weather class lower bound as shown in the following graph:
-
-<div style="text-align: center;">
-  <img src="images/latitude behavior.png"  width="400">
-</div>
+As a matter of fact, by calculating the power output-weighted average price, the resulting price is lowered to 99.55 €/MWh. 
+This phenomenon, detrimental to the profitability of solar fields, is called _duck curve_.
+ 
 
 # Bibliography
 1) > **Kristijan Brecl**, **Marko Topič**, *Photovoltaics (PV) System Energy Forecast on the Basis of the Local Weather Forecast: Problems, Uncertainties and Solutions*, Energies, Volume 11, 2018, Number 5, Article Number 1143, [DOI: 10.3390/en11051143](https://doi.org/10.3390/en11051143).  
